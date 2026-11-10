@@ -1,5 +1,5 @@
 {
-  "scope": "Source-credit-only update. Tests not already present are not imported. Questions, choices, answers, solutions, labels, difficulty, stable IDs, display numbers, and all SVGs are unchanged.",
+  "scope": "The original source-credit-only update is preserved by the historical sourceGroups, suppliedFiles, fingerprints, and validation fields. publicCatalog includes the two subsequently authorized Alpha Statewide imports described in subsequentImports and docs/alpha-statewide-2026-audit.md. Earlier question content and SVGs remain unchanged.",
   "publicCatalog": {
     "Mu": {
       "questions": 558,
@@ -7,8 +7,8 @@
       "missing": []
     },
     "Alpha": {
-      "questions": 267,
-      "credited": 267,
+      "questions": 327,
+      "credited": 327,
       "missing": []
     },
     "Theta": {
@@ -16,9 +16,31 @@
       "credited": 447,
       "missing": []
     },
-    "total": 1272,
+    "total": 1332,
     "missingCount": 0
   },
+  "subsequentImports": [
+    {
+      "division": "Alpha",
+      "competition": "2026 January Statewide",
+      "event": "Precalculus Individual",
+      "first": 20331,
+      "last": 20360,
+      "retainedOriginals": "1-30",
+      "excludedOriginals": [],
+      "svgs": ["alpha-january-statewide-2026-triangle.svg", "alpha-january-statewide-2026-tricuspoid.svg"]
+    },
+    {
+      "division": "Alpha",
+      "competition": "2026 King February Statewide",
+      "event": "Precalculus Individual",
+      "first": 20361,
+      "last": 20390,
+      "retainedOriginals": "1-30",
+      "excludedOriginals": [],
+      "svgs": ["alpha-king-statewide-2026-incircle.svg"]
+    }
+  ],
   "addedCredits": {
     "matchedToSuppliedPDFs": 149,
     "existingCatalogProvenance": 90,

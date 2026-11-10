@@ -58,7 +58,7 @@ test("existing retained IDs, numbering, topics, methods, difficulty, choices and
   assert.equal(createHash("sha256").update(readFileSync(new URL("../data/questions/mu.ts",import.meta.url))).digest("hex"),
     "c44c28c37a223ed2236a616ce51aa363a304fb2ab192561efb0d1e24e4fd44c3");
   // Later authorized Alpha source credits must leave all reviewed content intact.
-  assert.equal(hash(alphaQuestions.map(q=>{
+  assert.equal(hash(alphaQuestions.filter(q=>q.id<=20330).map(q=>{
     const content={...q};
     delete content.source;
     return content;

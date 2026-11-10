@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="380" height="300" viewBox="0 0 380 300" role="img" aria-labelledby="title desc">
+<title id="title">Triangle with angles 30°, 45°, and 105°</title>
+<desc id="desc">Triangle ABC has side AB of length 10. Angle A is 30 degrees, angle B is 45 degrees, and angle C is 105 degrees. The drawing uses those exact angles.</desc>
+<path d="M45 250 L287.487 110 L249.974 250 Z" fill="#eff6ff" stroke="#26354a" stroke-width="2.5" stroke-linejoin="round"/>
+<g fill="none" stroke="#527194" stroke-width="1.5">
+<path d="M76 250 A31 31 0 0 0 71.847 234.5"/>
+<path d="M262.372 124.5 A29 29 0 0 0 279.981 138.012"/>
+<path d="M256.186 226.818 A24 24 0 0 0 225.974 250"/>
+</g>
+<g fill="#17233b" font-family="Georgia, 'Times New Roman', serif" font-size="20">
+<text x="25" y="268">A</text><text x="292" y="103">B</text><text x="254" y="275">C</text>
+<text x="153" y="165">10</text><text x="85" y="240" font-size="17">30°</text>
+<text x="249" y="157" font-size="17">45°</text><text x="201" y="231" font-size="17">105°</text>
+</g></svg>

@@ -41,7 +41,7 @@ assert.ok(questions.every(question => question.source), "every public question i
 const sourceKey = question => JSON.stringify([question.division, question.source.competition, question.source.event]);
 const sources = new Map();
 for (const question of questions) if (!sources.has(sourceKey(question))) sources.set(sourceKey(question), question);
-assert.equal([...sources.values()].filter(question => question.division === "Alpha").length, 9);
+assert.equal([...sources.values()].filter(question => question.division === "Alpha").length, 11);
 assert.equal([...sources.values()].filter(question => question.division === "Theta").length, 15);
 
 const server = createServer(async (req, res) => {
@@ -105,6 +105,34 @@ try {
   assert.deepEqual(errors, []);
   assert.deepEqual(externalRequests, [], "credit display requires no external requests");
   console.log(`PASS: ${checked} desktop/mobile credit checks covering all ${sources.size} source sets in Question Bank, Trainer, multiplayer play, spectators, and results. Screenshots: ${output}`);
+  let rendered = 0;
+  for (const question of alphaQuestions.filter(q => q.id >= 20331 && q.id <= 20390)) {
+    for (const width of [1280, 320]) {
+      await page.setViewportSize({ width, height: 1000 });
+      await page.goto(`${origin}/?guest&view=trainer&revealed&id=${question.id}`);
+      await expect(page.getByLabel("Question source", { exact: true })).toBeVisible();
+      await expect(page.getByText("Solution", { exact: true })).toBeVisible();
+      assert.equal(await page.locator(".katex-error").count(), 0, `formula error: ${question.id}`);
+      assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1),
+        `page overflow: ${question.id} at ${width}px`);
+      if (question.illustration) {
+        const figure = page.getByRole("img", { name: question.illustration.alt });
+        await expect(figure).toBeVisible();
+        assert.ok(await figure.evaluate(img => img.complete && img.naturalWidth > 0), "SVG loads");
+        assert.ok(await figure.evaluate(img => {
+          const box = img.getBoundingClientRect();
+          return box.width > 150 && box.left >= 0 && box.right <= innerWidth;
+        }), "figure stays inside viewport");
+      }
+      if ([20341, 20356, 20366, 20381, 20382, 20383, 20385, 20386, 20390].includes(question.id)) {
+        await page.screenshot({ path: join(output, `import-${question.id}-${width}.png`), fullPage: true });
+      }
+      rendered++;
+    }
+  }
+  assert.deepEqual(errors, []);
+  assert.deepEqual(externalRequests, []);
+  console.log(`PASS: ${rendered} new problem/solution renders at desktop/mobile widths, including every imported SVG.`);
 } finally {
   await browser?.close();
   await new Promise(resolve => server.close(resolve));

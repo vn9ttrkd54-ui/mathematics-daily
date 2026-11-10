@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="380" viewBox="0 0 640 380" role="img" aria-labelledby="title desc">
+<title id="title">Triangle incircle and equal tangent segments</title>
+<desc id="desc">Triangle ABC with incenter I and inradius r. M_A, M_B, and M_C are the points of tangency on BC, AC, and AB. The blue lines bisect the vertex angles. Red radii meet the sides at right angles. Side lengths a, b, and c are opposite vertices A, B, and C. Vector redrawing of the source diagram credited to Wolfram MathWorld.</desc>
+<path d="M70.000 300.000 L250.000 40.000 L550.000 300.000 Z" fill="none" stroke="#202735" stroke-width="2.5"/>
+<g stroke="#526ccc" stroke-width="1.5" fill="none"><path d="M70.000 300.000 L269.620 195.409"/><path d="M250.000 40.000 L269.620 195.409"/><path d="M550.000 300.000 L269.620 195.409"/></g>
+<circle cx="269.620" cy="195.409" r="104.591" fill="none" stroke="#202735" stroke-width="2.3"/>
+<g stroke="#b74643" stroke-width="1.6" fill="none"><path d="M269.620 195.409 L338.120 116.370"/>
+<path d="M269.620 195.409 L269.620 300.000"/>
+<path d="M269.620 195.409 L183.625 135.874"/><path d="M344.921 122.265 L339.026 129.066 L332.225 123.171"/>
+<path d="M278.620 300.000 L278.620 291.000 L269.620 291.000"/>
+<path d="M188.748 128.475 L196.148 133.598 L191.025 140.997"/></g>
+<g stroke="#526ccc" stroke-width="0.9" fill="none"><path d="M99.000 300.000 L98.977 298.834 L98.906 297.670 L98.789 296.509 L98.626 295.355 L98.416 294.207 L98.160 293.070 L97.858 291.943 L97.512 290.829 L97.121 289.731 L96.686 288.648 L96.208 287.585 L95.688 286.541 L95.126 285.519 L94.523 284.520 L93.881 283.547 L93.200 282.600 L92.482 281.681 L91.727 280.792 L90.937 279.934 L90.113 279.108 L89.257 278.317 L88.370 277.560 L87.452 276.839 L86.507 276.156"/><path d="M94.276 294.026 L102.044 292.114"/><path d="M88.730 283.441 L94.724 278.143"/><path d="M232.354 65.488 L233.939 66.515 L235.583 67.444 L237.281 68.271 L239.026 68.993 L240.812 69.607 L242.632 70.112 L244.479 70.504 L246.347 70.784 L248.228 70.949 L250.116 71.000 L252.003 70.935 L253.883 70.756 L255.748 70.462 L257.592 70.056 L259.408 69.538 L261.190 68.910 L262.929 68.175 L264.621 67.336 L266.258 66.395 L267.835 65.356 L269.346 64.223 L270.785 63.000 L272.147 61.692 L273.426 60.303"/><path d="M244.703 66.475 L243.133 74.320"/><path d="M242.474 65.930 L240.244 73.613"/><path d="M263.734 63.246 L267.804 70.134"/><path d="M261.711 64.328 L265.181 71.536"/><path d="M528.085 281.007 L527.530 281.667 L526.994 282.344 L526.479 283.036 L525.985 283.743 L525.512 284.465 L525.061 285.200 L524.631 285.949 L524.225 286.710 L523.841 287.483 L523.480 288.266 L523.142 289.060 L522.829 289.864 L522.539 290.677 L522.274 291.498 L522.034 292.327 L521.818 293.162 L521.627 294.004 L521.461 294.850 L521.320 295.702 L521.205 296.557 L521.115 297.415 L521.051 298.275 L521.013 299.137 L521.000 300.000"/><path d="M527.495 289.113 L520.293 285.629"/><path d="M528.501 287.242 L521.621 283.159"/><path d="M529.661 285.463 L523.153 280.811"/><path d="M525.109 297.665 L517.144 296.918"/><path d="M525.397 295.561 L517.524 294.140"/><path d="M525.863 293.488 L518.139 291.404"/></g>
+<g fill="#202735"><circle cx="70" cy="300" r="3"/><circle cx="250" cy="40" r="3"/><circle cx="550" cy="300" r="3"/><circle cx="269.620" cy="195.409" r="3"/></g>
+<g fill="#b74643"><circle cx="338.120" cy="116.370" r="3"/><circle cx="269.620" cy="300" r="3"/><circle cx="183.625" cy="135.874" r="3"/></g>
+<g font-family="Georgia, 'Times New Roman', serif" font-size="23" fill="#17233b">
+<text x="46" y="318">A</text><text x="240" y="27">B</text><text x="560" y="318">C</text>
+<text x="244.620" y="202.409">I</text>
+<text x="424" y="157" font-style="italic">a</text><text x="385" y="337" font-style="italic">b</text><text x="132" y="159" font-style="italic">c</text>
+</g>
+<g font-family="Georgia, 'Times New Roman', serif" font-size="20" fill="#b74643">
+<text x="350.120" y="111.370">M<tspan baseline-shift="sub" font-size="14">A</tspan></text>
+<text x="254.620" y="327">M<tspan baseline-shift="sub" font-size="14">B</tspan></text>
+<text x="143.625" y="137.874">M<tspan baseline-shift="sub" font-size="14">C</tspan></text>
+<text x="311.870" y="157.890" font-style="italic">r</text><text x="277.620" y="249.704" font-style="italic">r</text><text x="234.622" y="167.642" font-style="italic">r</text>
+</g></svg>

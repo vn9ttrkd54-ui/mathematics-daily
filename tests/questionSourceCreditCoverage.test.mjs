@@ -10,15 +10,17 @@ const report=JSON.parse(readFileSync(new URL("../docs/question-source-credit-aud
 const questions=[...muQuestions,...alphaQuestions,...thetaQuestions];
 const hash=value=>createHash("sha256").update(JSON.stringify(value)).digest("hex");
 const addedIds=new Set(report.sourceGroups.flatMap(group=>Array.from({length:group.last-group.first+1},(_,i)=>group.first+i)));
+const importedIds=new Set(report.subsequentImports.flatMap(group=>Array.from({length:group.last-group.first+1},(_,i)=>group.first+i)));
+const importedSVGs=new Set(report.subsequentImports.flatMap(group=>group.svgs));
 const clean=qs=>qs.map(q=>{
   const content={...q};
   delete content.source;
   return content;
 });
 
-test("all 1272 public questions have complete source credits and unique original-paper identities",()=>{
-  assert.equal(questions.length,1272);
-  assert.deepEqual([muQuestions.length,alphaQuestions.length,thetaQuestions.length],[558,267,447]);
+test("all 1332 public questions have complete source credits and unique original-paper identities",()=>{
+  assert.equal(questions.length,1332);
+  assert.deepEqual([muQuestions.length,alphaQuestions.length,thetaQuestions.length],[558,327,447]);
   const identities=new Set();
   for(const q of questions){
     assert.ok(q.source,"missing source: "+q.division+" #"+q.number);
@@ -57,17 +59,22 @@ test("five supplied existing Alpha sets and three already-identified Theta sets 
 });
 
 test("all existing question content, labels, IDs, numbering, and pre-existing credits are unchanged",()=>{
-  assert.equal(hash(clean(alphaQuestions)),report.fingerprints.unchangedAlphaContent);
+  assert.equal(hash(clean(alphaQuestions.filter(q=>!importedIds.has(q.id)))),report.fingerprints.unchangedAlphaContent);
   assert.equal(hash(clean(thetaQuestions)),report.fingerprints.unchangedThetaContent);
   assert.equal(createHash("sha256").update(readFileSync(new URL("../data/questions/mu.ts",import.meta.url))).digest("hex"),
     report.fingerprints.unchangedMuFile);
-  assert.equal(hash(questions.filter(q=>!addedIds.has(q.id)).map(q=>[q.id,q.source])),report.fingerprints.preExistingCredits);
+  assert.equal(hash(questions.filter(q=>!addedIds.has(q.id)&&!importedIds.has(q.id)).map(q=>[q.id,q.source])),report.fingerprints.preExistingCredits);
 });
 
-test("all SVGs are byte-identical and no unmatched test or missing question is added",()=>{
-  const files=readdirSync(new URL("../public/questions/",import.meta.url)).filter(file=>file.endsWith(".svg")).sort();
+test("all earlier SVGs remain byte-identical and the two authorized imports have full credit",()=>{
+  const files=readdirSync(new URL("../public/questions/",import.meta.url)).filter(file=>file.endsWith(".svg")&&!importedSVGs.has(file)).sort();
   const digests=files.map(file=>[file,createHash("sha256").update(readFileSync(new URL("../public/questions/"+file,import.meta.url))).digest("hex")]);
   assert.equal(hash(digests),report.fingerprints.unchangedSVGs);
-  assert.equal(new Set(questions.map(q=>q.id)).size,1272);
-  assert.ok(!alphaQuestions.some(q=>q.source.competition==="2026 King February Statewide"||q.source.competition==="2026 January Statewide"));
+  assert.equal(new Set(questions.map(q=>q.id)).size,1332);
+  for(const group of report.subsequentImports){
+    const imported=alphaQuestions.filter(q=>importedIds.has(q.id)&&q.source.competition===group.competition);
+    assert.equal(imported.length,30);
+    assert.deepEqual(imported.map(q=>q.source.questionNumber),Array.from({length:30},(_,i)=>i+1));
+    assert.ok(imported.every(q=>q.source.event===group.event));
+  }
 });

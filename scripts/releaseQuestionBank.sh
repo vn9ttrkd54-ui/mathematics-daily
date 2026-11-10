@@ -6,8 +6,8 @@ cd "$(dirname "$0")/.."
   printf '%s\n' "Stop: this release is intended for main." >&2
   exit 1
 }
-[[ "$(git remote get-url origin)" == "https://github.com/vn9ttrkd54-ui/MAO-practice.git" ]] || {
-  printf '%s\n' "Stop: origin is not the reviewed MAO-practice repository." >&2
+[[ "$(git remote get-url origin)" == "https://github.com/vn9ttrkd54-ui/mathematics-daily.git" ]] || {
+  printf '%s\n' "Stop: origin is not the reviewed mathematics-daily repository." >&2
   exit 1
 }
 if ! git diff --cached --quiet; then
@@ -17,6 +17,8 @@ fi
 
 # Only the question-bank work reviewed in this chat, not unrelated pending work.
 paths=(
+  README.md
+  tsconfig.json
   AGENTS.md
   components/math/MathText.tsx
   components/practice/question-detail.module.css
@@ -25,6 +27,8 @@ paths=(
   components/multiplayer/SpectatorView.tsx
   data/questions/mu.ts
   data/questions/alpha.ts
+  data/questions/alphaJanuaryStatewide2026.ts
+  data/questions/alphaKingStatewide2026.ts
   data/questions/theta.ts
   data/question-references/README.md
   data/question-references/muNationals.ts
@@ -32,6 +36,7 @@ paths=(
   docs/theta-chiles-statewide-2025-audit.md
   docs/theta-six-2026-source-audit.md
   docs/question-source-credit-audit.json
+  docs/alpha-statewide-2026-audit.md
   docs/february-regional-2026-audit.md
   docs/february-regional-2025-audit.md
   docs/february-regional-2024-audit.md
@@ -51,6 +56,9 @@ paths=(
   docs/state-convention-2025-audit.md
   docs/state-convention-2026-audit.md
   public/questions/mu-146-original.svg
+  public/questions/alpha-january-statewide-2026-triangle.svg
+  public/questions/alpha-january-statewide-2026-tricuspoid.svg
+  public/questions/alpha-king-statewide-2026-incircle.svg
   public/questions/mu-194-original-solution.svg
   public/questions/mu-196-original-solution.svg
   public/questions/mu-201-original-solution.svg
@@ -121,6 +129,12 @@ paths=(
   tests/theta2026Sources.test.mjs
   tests/thetaStateSourceCredits.test.mjs
   tests/alphaSourceCredits2026.test.mjs
+  tests/alphaNumbering.test.mjs
+  tests/alphaQuestions20211To20240.test.mjs
+  tests/alphaQuestions20241To20270.test.mjs
+  tests/alphaQuestions20271To20300.test.mjs
+  tests/alphaStatewide2026.test.mjs
+  tests/multiplayerLobby.test.mjs
   tests/questionSourceCreditCoverage.test.mjs
   tests/questionCreditVisibility.browser.mjs
   tests/catalogCleanup.test.mjs

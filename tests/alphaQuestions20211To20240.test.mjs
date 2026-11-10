@@ -1,11 +1,8 @@
 import assert from "node:assert/strict";
-import { readFileSync } from "node:fs";
 import test from "node:test";
 import katex from "katex";
 
-const source = readFileSync(new URL("../data/questions/alpha.ts", import.meta.url), "utf8");
-const js = source.replace(/^import type .*;\s*/m, "").replace(": Question[]", "");
-const { alphaQuestions } = await import("data:text/javascript;base64," + Buffer.from(js).toString("base64"));
+import { alphaQuestions } from "../data/questions/alpha.ts";
 const questions = alphaQuestions.filter(question => question.number >= 148 && question.number <= 177);
 
 test("supplied Alpha set contains all 30 sequential questions and preserved IDs", () => {

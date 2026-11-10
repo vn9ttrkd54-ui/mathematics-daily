@@ -7,6 +7,7 @@ import { createHash, randomUUID } from "node:crypto";
 import ts from "typescript";
 import { nextLobbyConnection } from "../lib/multiplayerLobbyConnection.ts";
 import { createApiObserver } from "../lib/apiMetrics.ts";
+import { alphaQuestions } from "../data/questions/alpha.ts";
 
 const require = createRequire(import.meta.url);
 const compiled = new Map();
@@ -60,7 +61,7 @@ test("settings PATCH validates ranges, version, origin and connection, ignoring 
   assert.deepEqual(f.calls[0].args,[roomId,'1-3',2,connectionId,player.id]);
 });
 
-const catalog=[...load('data/questions/mu.ts',{}).muQuestions,...load('data/questions/alpha.ts',{}).alphaQuestions,...load('data/questions/theta.ts',{}).thetaQuestions];
+const catalog=[...load('data/questions/mu.ts',{}).muQuestions,...alphaQuestions,...load('data/questions/theta.ts',{}).thetaQuestions];
 test("Ready uses one verified identity and one RPC; legacy snapshots default to not ready",async()=>{
   for(const value of [false,true]) {
     const confirmed={...snapshot,currentPlayer:{...player,lobby_ready:value},players:[{...player,lobby_ready:value}]};

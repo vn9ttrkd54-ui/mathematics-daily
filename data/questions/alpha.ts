@@ -1,4 +1,6 @@
 import type { Question } from "@/types/question";
+import { alphaJanuaryStatewide2026Questions } from "./alphaJanuaryStatewide2026.ts";
+import { alphaKingStatewide2026Questions } from "./alphaKingStatewide2026.ts";
 
 export const alphaQuestions: Question[] = [
   {
@@ -5257,4 +5259,6 @@ Each sequence has \(17\) terms. Their sums are
 \]
 Therefore the first-row sum is \(833+918=1751\), and the answer is \(\boxed{\text{D}}\).`,
 },
+  ...alphaJanuaryStatewide2026Questions,
+  ...alphaKingStatewide2026Questions,
 ];

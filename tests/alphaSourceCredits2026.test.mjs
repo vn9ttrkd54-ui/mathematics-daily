@@ -28,22 +28,20 @@ test("the four already-present supplied Alpha sets have all 118 original-number 
   assert.equal(alphaQuestions.find(q=>q.id===20330).source.questionNumber,30);
 });
 
-test("credits change no questions, answers, solutions, ratings, methods, stable IDs, display numbers, or illustration assignments",()=>{
-  const clean=alphaQuestions.map(q=>{
+test("the original 267 questions retain their content, labels, stable IDs, numbers, and illustration assignments",()=>{
+  const existing=alphaQuestions.filter(q=>q.id<=20330);
+  const clean=existing.map(q=>{
     const copy={...q};
     delete copy.source;
     return copy;
   });
-  assert.equal(alphaQuestions.length,267);
+  assert.equal(existing.length,267);
   assert.equal(hash(clean),"58432486ac41dd54186ca3f6c8894a24be6b3b0d688bee53cb361d9e1ab17e0c");
-  // Later legacy-set credits are independently covered by the full-catalog audit.
-  for(const competition of ["2026 King February Statewide","2026 January Statewide"]){
-    assert.ok(!alphaQuestions.some(q=>q.source?.competition===competition),"missing test is not imported");
-  }
+  // Subsequent Statewide imports are independently covered by alphaStatewide2026.test.mjs.
 });
 
-test("every existing question SVG remains byte-identical during this credit-only update",()=>{
-  const files=readdirSync(new URL("../public/questions/",import.meta.url)).filter(file=>file.endsWith(".svg")).sort();
+test("every pre-existing question SVG remains byte-identical",()=>{
+  const files=readdirSync(new URL("../public/questions/",import.meta.url)).filter(file=>file.endsWith(".svg")&&!file.startsWith("alpha-january-statewide-2026-")&&!file.startsWith("alpha-king-statewide-2026-")).sort();
   const digests=files.map(file=>[file,createHash("sha256").update(readFileSync(new URL("../public/questions/"+file,import.meta.url))).digest("hex")]);
   assert.equal(hash(digests),"357a1b784aab8e74dbe093af5749b1b6259869a0514b1a054b8d29328df443d0");
 });

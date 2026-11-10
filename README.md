@@ -2,7 +2,7 @@
 
 Mathematics Daily is a mathematics practice website for high-school competitors, coaches, and teachers ages 13 and older. It combines a searchable question bank, adaptive practice, daily challenges, a guided AI tutor, and real-time multiplayer competition.
 
-The approved bank currently contains **1,272 questions** across **Mu (Calculus), Alpha (Precalculus), and Theta (Algebra II)**, with worked solutions, source credits, difficulty/topic/method labels, and SVG illustrations where needed.
+The approved bank currently contains **1,332 questions** across **Mu (Calculus), Alpha (Precalculus), and Theta (Algebra II)**, with worked solutions, source credits, difficulty/topic/method labels, and SVG illustrations where needed.
 
 ## Working demonstration
 

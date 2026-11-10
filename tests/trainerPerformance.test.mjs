@@ -53,7 +53,7 @@ test("960 seeded selections match the pre-refactor algorithm across all division
   // questions. They exist only in this algorithm fixture, never the live catalog.
   const baselineQuestions = [
     ...muNationalReferences.map(q=>({id:q.id,number:q.id-10000,division:q.division,topic:q.topic,difficulty:q.difficulty})).sort((a,b)=>a.id-b.id),
-    ...questions.filter(q=>(q.division!=="Mu"||q.id<=10325)&&q.id<=30419).map(q=>q.division==="Mu"?{...q,number:q.id-10000}:q),
+    ...questions.filter(q=>(q.division!=="Mu"||q.id<=10325)&&(q.division!=="Alpha"||q.id<=20330)&&q.id<=30419).map(q=>q.division==="Mu"?{...q,number:q.id-10000}:q),
   ];
   // Historical benchmark only: the public February Regional throw-out stays excluded.
   baselineQuestions.splice(baselineQuestions.findIndex(q=>q.id===30084),0,
