@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 175" role="img" aria-labelledby="title">
+<title id="title">Square centered on the diameter of a semicircle, with both upper corners on the arc.</title>
+<rect width="320" height="175" fill="white"/>
+<g fill="none" stroke="#172939" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"><path d="M30 153 A130 130 0 0 1 290 153 Z M102 153 V37 H218 V153" />
+</g>
+</svg>

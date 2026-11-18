@@ -41,7 +41,7 @@ test("the original 267 questions retain their content, labels, stable IDs, numbe
 });
 
 test("every pre-existing question SVG remains byte-identical",()=>{
-  const files=readdirSync(new URL("../public/questions/",import.meta.url)).filter(file=>file.endsWith(".svg")&&!file.startsWith("alpha-january-statewide-2026-")&&!file.startsWith("alpha-king-statewide-2026-")).sort();
+  const files=readdirSync(new URL("../public/questions/",import.meta.url)).filter(file=>file.endsWith(".svg")&&!file.startsWith("alpha-2025-")&&!file.startsWith("alpha-january-statewide-2026-")&&!file.startsWith("alpha-king-statewide-2026-")).sort();
   const digests=files.map(file=>[file,createHash("sha256").update(readFileSync(new URL("../public/questions/"+file,import.meta.url))).digest("hex")]);
   assert.equal(hash(digests),"357a1b784aab8e74dbe093af5749b1b6259869a0514b1a054b8d29328df443d0");
 });

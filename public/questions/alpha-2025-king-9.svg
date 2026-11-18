@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 185" role="img" aria-labelledby="title">
+<title id="title">Right triangle RST with S at the right angle, TS equal to 6 and hypotenuse RT equal to 8.</title>
+<rect width="300" height="185" fill="white"/>
+<g fill="none" stroke="#172939" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"><path d="M54 30 V145 H255 Z M54 132 H67 V145" />
+<text x="42" y="27" font-size="16" text-anchor="middle" font-family="Arial,sans-serif" fill="#162534" stroke="none">T</text>
+<text x="42" y="158" font-size="16" text-anchor="middle" font-family="Arial,sans-serif" fill="#162534" stroke="none">S</text>
+<text x="268" y="152" font-size="16" text-anchor="middle" font-family="Arial,sans-serif" fill="#162534" stroke="none">R</text>
+<text x="36" y="92" font-size="16" text-anchor="middle" font-family="Arial,sans-serif" fill="#162534" stroke="none">6</text>
+<text x="165" y="77" font-size="16" text-anchor="middle" font-family="Arial,sans-serif" fill="#162534" stroke="none">8</text>
+</g>
+</svg>

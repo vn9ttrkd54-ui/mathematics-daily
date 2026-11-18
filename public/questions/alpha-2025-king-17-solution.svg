@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 250 220" role="img" aria-labelledby="title">
+<title id="title">Perpendicular distance d from circle center to a chord; half-chord is 5 and radius is 10.</title>
+<rect width="250" height="220" fill="white"/>
+<g fill="none" stroke="#172939" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"><circle cx="120" cy="110" r="86" fill="white"/>
+<path d="M77 35.5 H163 L120 110 V35.5 M120 46 H131 V35.5" />
+<text x="139" y="55" font-size="14" text-anchor="middle" font-family="Arial,sans-serif" fill="#162534" stroke="none">5</text>
+<text x="159" y="85" font-size="16" text-anchor="middle" font-family="Arial,sans-serif" fill="#162534" stroke="none">10</text>
+<text x="106" y="73" font-size="16" text-anchor="middle" font-family="Arial,sans-serif" fill="#162534" stroke="none">d</text>
+</g>
+</svg>

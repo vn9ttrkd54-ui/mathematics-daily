@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 380 105" role="img" aria-labelledby="title">
+<title id="title">Number line showing the critical angles π/6, 2π/3, 5π/6 and 4π/3.</title>
+<rect width="380" height="105" fill="white"/>
+<g fill="none" stroke="#172939" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"><path d="M12 46 H368 M17 42 L12 46 L17 50 M363 42 L368 46 L363 50" />
+<path d="M46 40 V54" />
+<text x="46" y="72" font-size="16" text-anchor="middle" font-family="Arial,sans-serif" fill="#162534" stroke="none">π/6</text>
+<path d="M166 40 V54" />
+<text x="166" y="72" font-size="16" text-anchor="middle" font-family="Arial,sans-serif" fill="#162534" stroke="none">2π/3</text>
+<path d="M206 40 V54" />
+<text x="206" y="84" font-size="16" text-anchor="middle" font-family="Arial,sans-serif" fill="#162534" stroke="none">5π/6</text>
+<path d="M326 40 V54" />
+<text x="326" y="72" font-size="16" text-anchor="middle" font-family="Arial,sans-serif" fill="#162534" stroke="none">4π/3</text>
+</g>
+</svg>

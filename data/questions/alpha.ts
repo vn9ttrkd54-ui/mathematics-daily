@@ -2,6 +2,12 @@ import type { Question } from "@/types/question";
 import { alphaJanuaryStatewide2026Questions } from "./alphaJanuaryStatewide2026.ts";
 import { alphaKingStatewide2026Questions } from "./alphaKingStatewide2026.ts";
 
+import { alphaJan2025Questions } from "./alphaJan2025.ts";
+import { alphaFeb2025Questions } from "./alphaFeb2025.ts";
+import { alphaMar2025Questions } from "./alphaMar2025.ts";
+import { alphaKing2025Questions } from "./alphaKing2025.ts";
+import { alphaChiles2025Questions } from "./alphaChiles2025.ts";
+
 export const alphaQuestions: Question[] = [
   {
     id: 20001,
@@ -5261,4 +5267,9 @@ Therefore the first-row sum is \(833+918=1751\), and the answer is \(\boxed{\tex
 },
   ...alphaJanuaryStatewide2026Questions,
   ...alphaKingStatewide2026Questions,
+  ...alphaJan2025Questions,
+  ...alphaFeb2025Questions,
+  ...alphaMar2025Questions,
+  ...alphaKing2025Questions,
+  ...alphaChiles2025Questions,
 ];

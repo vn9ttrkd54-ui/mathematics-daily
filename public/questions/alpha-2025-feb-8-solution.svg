@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 205" role="img" aria-labelledby="title">
+<title id="title">A radius to the upper right corner makes a right triangle of height 4√5 and base 2√5.</title>
+<rect width="320" height="205" fill="white"/>
+<g fill="none" stroke="#172939" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"><path d="M30 153 A130 130 0 0 1 290 153 Z M102 153 V37 H218 V153" />
+<path d="M160 153 L218 37" />
+<text x="239" y="104" font-size="16" text-anchor="middle" font-family="Arial,sans-serif" fill="#162534" stroke="none">4√5</text>
+<text x="190" y="176" font-size="16" text-anchor="middle" font-family="Arial,sans-serif" fill="#162534" stroke="none">2√5</text>
+<text x="170" y="100" font-size="16" text-anchor="middle" font-family="Arial,sans-serif" fill="#162534" stroke="none">r</text>
+</g>
+</svg>

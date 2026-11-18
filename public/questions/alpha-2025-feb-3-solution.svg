@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 270 155" role="img" aria-labelledby="title">
+<title id="title">Right triangle with side 2√6 opposite θ and hypotenuse 5.</title>
+<rect width="270" height="155" fill="white"/>
+<g fill="none" stroke="#172939" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"><path d="M58 24 V119 H227 Z M58 106 H71 V119" />
+<text x="32" y="76" font-size="16" text-anchor="middle" font-family="Arial,sans-serif" fill="#162534" stroke="none">2√6</text>
+<text x="153" y="62" font-size="16" text-anchor="middle" font-family="Arial,sans-serif" fill="#162534" stroke="none">5</text>
+<text x="181" y="111" font-size="16" text-anchor="middle" font-family="Arial,sans-serif" fill="#162534" stroke="none">θ</text>
+</g>
+</svg>

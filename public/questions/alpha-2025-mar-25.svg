@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 328 315" role="img" aria-labelledby="title">
+<title id="title">Graph A has both ends down, touches the origin, and crosses twice to the right. Graph B has both ends up, touches the origin, and crosses twice to the right. Graph C reflects B across the vertical axis. Graph D has both ends up, touches the origin from below, and crosses once on either side.</title>
+<rect width="328" height="315" fill="white"/>
+<g fill="none" stroke="#172939" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"><g transform="translate(8 5)"><text x="10" y="17" font-size="16" text-anchor="middle" font-family="Arial,sans-serif" fill="#162534" stroke="none">A</text>
+<path d="M8 98 H145 M48 21 V141" stroke="#84929f" stroke-width="1"/>
+<path d="M27 139 C34 114 38 98 48 98 C56 98 60 101 67 98 C85 90 98 27 110 26 C120 23 125 83 132 139" />
+</g><g transform="translate(166 5)"><text x="10" y="17" font-size="16" text-anchor="middle" font-family="Arial,sans-serif" fill="#162534" stroke="none">B</text>
+<path d="M8 55 H145 M35 21 V141" stroke="#84929f" stroke-width="1"/>
+<path d="M16 21 C22 47 26 55 35 55 C42 55 47 51 53 53 C76 58 82 137 103 137 C117 137 122 76 128 21" />
+</g><g transform="translate(8 160)"><text x="10" y="17" font-size="16" text-anchor="middle" font-family="Arial,sans-serif" fill="#162534" stroke="none">C</text>
+<path d="M8 55 H145 M112 21 V141" stroke="#84929f" stroke-width="1"/>
+<path d="M22 21 C29 72 31 137 48 137 C66 137 76 55 92 53 C99 51 106 55 112 55 C119 55 126 40 131 20" />
+</g><g transform="translate(166 160)"><text x="10" y="17" font-size="16" text-anchor="middle" font-family="Arial,sans-serif" fill="#162534" stroke="none">D</text>
+<path d="M8 54 H145 M60 21 V141" stroke="#84929f" stroke-width="1"/>
+<path d="M40 20 C46 55 48 56 54 55 C57 54 58 54 60 54 C78 54 77 137 96 137 C113 137 117 59 122 20" />
+</g></g>
+</svg>

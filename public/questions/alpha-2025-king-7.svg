@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 250" role="img" aria-labelledby="title">
+<title id="title">Parabolic arch spanning 200 feet, with a vertex 100 feet above ground and an unknown height 10 feet to the right of the axis.</title>
+<rect width="400" height="250" fill="white"/>
+<g fill="none" stroke="#172939" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"><path d="M68 178 Q208 -102 348 178 M47 178 H367" />
+<path d="M208 20 V178 M222 40 V178" stroke-dasharray="5 4" stroke-width="1.5"/>
+<path d="M66 38 H60 V178 H66 M68 194 V201 H348 V194" />
+<text x="31" y="111" font-size="16" text-anchor="middle" font-family="Arial,sans-serif" fill="#162534" stroke="none">100′</text>
+<text x="208" y="225" font-size="16" text-anchor="middle" font-family="Arial,sans-serif" fill="#162534" stroke="none">200′</text>
+<text x="246" y="106" font-size="16" text-anchor="middle" font-family="Arial,sans-serif" fill="#162534" stroke="none">?</text>
+<path d="M285 143 L224 173 M227 166 L224 173 L233 172" />
+<text x="300" y="138" font-size="16" text-anchor="middle" font-family="Arial,sans-serif" fill="#162534" stroke="none">10′</text>
+</g>
+</svg>

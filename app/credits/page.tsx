@@ -70,6 +70,7 @@ export default function CreditsPage() {
                 Mathematics Honor Society
               </a>.
             </p>
+            <p>2025 Precalculus Individual questions and solutions are credited to the January, February, and March FAMAT Regionals, the Chiles Statewide, and the C. Leon King High School Statewide competition. Each question lists its original paper and number.</p>
             <p className={styles.independence}>
               Mathematics Daily is an independent educational project and is not
               affiliated with, sponsored by, or endorsed by Mu Alpha Theta.

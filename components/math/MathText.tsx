@@ -2,9 +2,34 @@ import katex from "katex";
 import Image from "next/image";
 
 type MathTextProps = { children: string; className?: string };
-const MATH_DELIMITER = /(\\\[[\s\S]*?\\\]|\\\([\s\S]*?\\\)|\[\[solution-diagram:(?:mu-(?:194|196|201|217|227|302|313|320|325|345|502|558)|theta-7|theta-nsu-2026-14|theta-feb-2026-(?:6|11|21|27|28|29))\]\])/g;
+const MATH_DELIMITER = /(\\\[[\s\S]*?\\\]|\\\([\s\S]*?\\\)|\[\[solution-diagram:(?:alpha-2025-(?:feb-8|feb-3|feb-5|king-17|mar-30)|mu-(?:194|196|201|217|227|302|313|320|325|345|502|558)|theta-7|theta-nsu-2026-14|theta-feb-2026-(?:6|11|21|27|28|29))\]\])/g;
 // Explicit local allowlist: never interpret arbitrary URLs or HTML from text.
 const SOLUTION_DIAGRAMS: Record<string, { src: string; alt: string; width: number; height: number }> = {
+  "[[solution-diagram:alpha-2025-feb-8]]": {
+    src: "/questions/alpha-2025-feb-8-solution.svg",
+    alt: "A radius to the upper right corner makes a right triangle of height 4√5 and base 2√5.",
+    width: 320, height: 205,
+  },
+  "[[solution-diagram:alpha-2025-feb-3]]": {
+    src: "/questions/alpha-2025-feb-3-solution.svg",
+    alt: "Right triangle with side 2√6 opposite θ and hypotenuse 5.",
+    width: 270, height: 155,
+  },
+  "[[solution-diagram:alpha-2025-feb-5]]": {
+    src: "/questions/alpha-2025-feb-5-solution.svg",
+    alt: "Number line showing the critical angles π/6, 2π/3, 5π/6 and 4π/3.",
+    width: 380, height: 105,
+  },
+  "[[solution-diagram:alpha-2025-king-17]]": {
+    src: "/questions/alpha-2025-king-17-solution.svg",
+    alt: "Perpendicular distance d from circle center to a chord; half-chord is 5 and radius is 10.",
+    width: 250, height: 220,
+  },
+  "[[solution-diagram:alpha-2025-mar-30]]": {
+    src: "/questions/alpha-2025-mar-30-solution.svg",
+    alt: "Possible sequence lengths n and corresponding first terms a, including zero and negative first terms ruled out by the question.",
+    width: 324, height: 151,
+  },
   "[[solution-diagram:theta-nsu-2026-14]]": {
     src: "/questions/theta-nsu-2026-14-solution.svg",
     alt: "Absolute-value graph h(x) equals |x+2| plus |2x+10|, intersecting y equals 4 at x negative sixteen thirds and negative four.",
