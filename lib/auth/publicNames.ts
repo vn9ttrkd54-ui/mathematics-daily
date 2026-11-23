@@ -19,7 +19,7 @@ export function isPublicNameAllowed(value: string) {
 
 export function getUsernameValidationError(value: unknown) {
   if (typeof value !== "string" || !USERNAME_PATTERN.test(value)) {
-    return "Use 3-20 lowercase letters, numbers, or underscores.";
+    return "Your username must be 3–20 characters long and contain only lowercase letters, numbers, or underscores.";
   }
   if (/^player_[0-9a-f]{12}$/.test(value)) return "That username is reserved. Please choose another.";
   return isPublicNameAllowed(value) ? null : PUBLIC_NAME_ERROR;
