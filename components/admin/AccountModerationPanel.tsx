@@ -1,6 +1,7 @@
 "use client";
 import { useState, type FormEvent } from "react";
 import { type ModerationAction, type ModerationAuditEntry, type ModerationState } from "@/lib/auth/moderation";
+import { formatEasternDateTime } from "@/lib/easternTime";
 
 type Props = { targetId: string; targetRole: string; actorId: string; actorRole: "admin" | "owner"; googleOnly: boolean; state: ModerationState; audit: ModerationAuditEntry[] };
 const labels: Record<ModerationAction, string> = {
@@ -66,6 +67,6 @@ export default function AccountModerationPanel({ targetId, targetRole, actorId, 
       <button disabled={busy || reason.trim().length < 5} className={`rounded-lg px-5 py-3 font-semibold text-white disabled:opacity-40 ${action === "delete" ? "bg-red-700" : "bg-blue-700"}`}>{busy ? "Checking…" : labels[action]}</button>
     </form>}
     <h3 className="mt-8 text-lg font-bold">Recent moderation history</h3>
-    {audit.length ? <ol className="mt-3 space-y-3">{audit.map(entry => <li key={entry.request_id} className="rounded-lg bg-slate-50 p-3 text-sm"><p className="font-semibold">{entry.action.replaceAll("_", " ")} · {new Date(entry.created_at).toLocaleString()}</p><p className="mt-1 whitespace-pre-wrap break-words">{entry.reason}</p><p className="mt-1 break-all text-xs text-slate-500">Actor: {entry.actor_id ?? "Deleted moderator"}</p></li>)}</ol> : <p className="mt-3 text-sm text-slate-500">No moderation actions recorded.</p>}
+    {audit.length ? <ol className="mt-3 space-y-3">{audit.map(entry => <li key={entry.request_id} className="rounded-lg bg-slate-50 p-3 text-sm"><p className="font-semibold">{entry.action.replaceAll("_", " ")} · <time dateTime={entry.created_at}>{formatEasternDateTime(entry.created_at)}</time></p><p className="mt-1 whitespace-pre-wrap break-words">{entry.reason}</p><p className="mt-1 break-all text-xs text-slate-500">Actor: {entry.actor_id ?? "Deleted moderator"}</p></li>)}</ol> : <p className="mt-3 text-sm text-slate-500">No moderation actions recorded.</p>}
   </section>;
 }

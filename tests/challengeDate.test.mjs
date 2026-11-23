@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 import { execFileSync } from "node:child_process";
 import test from "node:test";
 import { CHALLENGE_TIME_ZONE, getChallengeDate } from "../lib/challengeDate.ts";
+import { formatEasternDate, formatEasternDateTime, getEasternTimeZoneAbbreviation } from "../lib/easternTime.ts";
 
 export const midnightCases = [
   ["2026-01-15T04:59:59.999Z", "2026-01-14"],
@@ -44,4 +45,16 @@ test("challenge dates do not depend on the server or visitor timezone", () => {
 
 test("invalid instants fail instead of producing a malformed assignment date", () => {
   assert.throws(() => getChallengeDate(new Date(NaN)), RangeError);
+});
+
+test("Eastern displays preserve the local date and distinguish the repeated fall-back hour", () => {
+  assert.equal(formatEasternDate("2026-01-15T04:59:59Z"), "1/14/2026");
+  assert.equal(formatEasternDate("2026-07-15T03:59:59Z"), "7/14/2026");
+
+  const daylight = "2026-11-01T05:30:00Z";
+  const standard = "2026-11-01T06:30:00Z";
+  assert.equal(getEasternTimeZoneAbbreviation(new Date(daylight)), "EDT");
+  assert.equal(getEasternTimeZoneAbbreviation(new Date(standard)), "EST");
+  assert.match(formatEasternDateTime(daylight), /1:30:00\s+AM\s+EDT$/);
+  assert.match(formatEasternDateTime(standard), /1:30:00\s+AM\s+EST$/);
 });

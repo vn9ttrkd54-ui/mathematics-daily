@@ -38,12 +38,13 @@ let browser;
 try {
   browser = await chromium.launch();
   const page = await browser.newPage({ timezoneId: "Asia/Tokyo" });
+  await page.clock.setFixedTime(new Date("2026-10-19T16:00:00Z"));
   const errors = [];
   page.on("pageerror", error => { errors.push(error.message); console.error(error.message); });
   await page.route("**/*", route => route.request().url().startsWith(origin) ? route.continue() : route.abort());
   await page.goto(origin);
   await page.getByRole("heading", { name: "Daily Challenge", exact: true }).waitFor();
-  assert.equal(await page.getByText("New York time", { exact: true }).count(), 1);
+  assert.equal(await page.getByText("New York time (EDT)", { exact: true }).count(), 1);
   assert.equal(await page.locator('time[datetime="2026-10-19"]').textContent(), "October 19, 2026");
   assert.equal(await page.getByLabel("Monday, today (New York), not completed", { exact: true }).count(), 1);
   assert.equal(await page.locator(".week .completed").count(), 0);

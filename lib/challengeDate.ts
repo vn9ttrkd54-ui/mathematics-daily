@@ -1,4 +1,6 @@
-export const CHALLENGE_TIME_ZONE = "America/New_York";
+import { EASTERN_TIME_ZONE as CHALLENGE_TIME_ZONE } from "./easternTime.ts";
+
+export { CHALLENGE_TIME_ZONE };
 
 const challengeDateFormat = new Intl.DateTimeFormat("en-US", {
   timeZone: CHALLENGE_TIME_ZONE,

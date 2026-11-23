@@ -9,6 +9,7 @@ import ChallengeLeaderboard from "@/components/challenge/ChallengeLeaderboard";
 import ChallengePersonalStats from "@/components/challenge/ChallengePersonalStats";
 import MathText from "@/components/math/MathText";
 import { getChallengeOverview } from "@/lib/challenge";
+import { getEasternTimeZoneAbbreviation } from "@/lib/easternTime";
 import type { ChallengeSubmissionResult } from "@/types/challenge";
 
 export const dynamic = "force-dynamic";
@@ -62,7 +63,7 @@ export default async function ChallengePage({ searchParams }: { searchParams: Pr
             <time dateTime={dailyChallenge?.date ?? statistics.asOfDate}>
               {formatChallengeDate(dailyChallenge?.date ?? statistics.asOfDate)}
             </time>
-            <span className={styles.dateTimeZone}>New York time</span>
+            <span className={styles.dateTimeZone}>New York time ({getEasternTimeZoneAbbreviation()})</span>
           </p>
         </header>
 

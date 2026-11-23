@@ -31,7 +31,7 @@ Vercel hosts the application. Supabase stores account and gameplay records separ
 
 ## Development history
 
-Before public release on November 1, 2026, the repository history was sanitized to remove permission-restricted question content, local Supabase connection metadata, and personal email addresses. All 707 existing commits, their messages, authors' display names, dates, and order were retained; commit IDs changed. Withheld question references now contain only editorial metadata. The latest tree also includes the corresponding publication notes and test adjustments. This cleanup does not establish permission to redistribute third-party question material beyond its recorded terms.
+The source-code repository became public on GitHub on November 1, 2026. Before that date, the Git history on `main` was sanitized to remove permission-restricted question content, local Supabase connection metadata, and personal email addresses. All 707 existing commits were retained in their original order, along with their messages, author display names, and dates. The commit hashes changed. Withheld question references now contain only editorial metadata. The current source tree includes the corresponding publication notes and test adjustments. Third-party question material remains subject to its recorded redistribution terms.
 
 These milestones describe the development recorded in the [Git history](https://github.com/vn9ttrkd54-ui/MAO-practice/commits/main):
 

@@ -1,9 +1,9 @@
 import Link from "next/link";
+import { formatEasternDate } from "@/lib/easternTime";
 import { getAdminUsers } from "@/lib/services/adminUsersService";
 import { getMultiplayerSummary } from "@/lib/multiplayerSummary";
 
 export const dynamic = "force-dynamic";
-const date = (value: string | null) => value ? new Date(value).toLocaleDateString("en-US",{timeZone:"UTC"}) : "No recorded activity";
 export default async function AdminUsersPage({ searchParams }: { searchParams: Promise<{ q?: string; role?: string; sort?: string; page?: string }> }) {
   const params=await searchParams;
   const search=(params.q ?? "").slice(0,100);
@@ -17,7 +17,7 @@ export default async function AdminUsersPage({ searchParams }: { searchParams: P
     <header className="my-6 rounded-2xl border border-blue-100 bg-gradient-to-br from-white to-blue-50 p-6 shadow-sm">
       <p className="text-xs font-bold uppercase tracking-widest text-blue-600">Owner & admin · User management</p>
       <h1 className="mt-2 text-3xl font-bold">Users</h1>
-      <p className="mt-3 text-slate-600">{result.total} matching accounts. Last active reflects recorded practice, challenges, or multiplayer activity—not online status. Dates are UTC.</p>
+      <p className="mt-3 text-slate-600">{result.total} matching accounts. Last active reflects recorded practice, challenges, or multiplayer activity—not online status. Dates use Eastern Time (EST/EDT).</p>
     </header>
     <form className="mb-6 flex flex-wrap items-end gap-4 rounded-lg border border-slate-200 bg-white p-5">
       <label className="flex-1 font-semibold">Username<input name="q" defaultValue={search} maxLength={100} placeholder="Search username" className="mt-2 block w-full rounded-lg border border-slate-300 p-3" /></label>
@@ -30,7 +30,7 @@ export default async function AdminUsersPage({ searchParams }: { searchParams: P
       <thead className="bg-slate-50"><tr>{["Username","Role","Joined","Last active","RP / rank","Ranked matches","Win rate","Daily streak"].map(label=><th key={label} scope="col" className="whitespace-nowrap p-4">{label}</th>)}</tr></thead>
       <tbody>{result.users.map(user=><tr key={user.id} className="border-t border-slate-100 hover:bg-blue-50/40">
         <td className="p-4"><Link className="font-semibold text-blue-700 underline" href={`/admin/users/${user.id}`}>{user.username}</Link></td>
-        <td className="p-4 capitalize">{user.role}</td><td className="p-4 whitespace-nowrap">{date(user.created_at)}</td><td className="p-4 whitespace-nowrap">{date(user.last_active)}</td>
+        <td className="p-4 capitalize">{user.role}</td><td className="p-4 whitespace-nowrap">{formatEasternDate(user.created_at)}</td><td className="p-4 whitespace-nowrap">{user.last_active ? formatEasternDate(user.last_active) : "No recorded activity"}</td>
         <td className="p-4 whitespace-nowrap">{user.rp} · {getMultiplayerSummary({rp:user.rp}).rank}</td><td className="p-4">{user.ranked_matches}</td>
         <td className="p-4">{user.ranked_matches ? `${Math.round(user.ranked_wins/user.ranked_matches*100)}%` : "—"}</td><td className="p-4 whitespace-nowrap">{user.current_streak} days · best {user.longest_streak}</td>
       </tr>)}</tbody>
