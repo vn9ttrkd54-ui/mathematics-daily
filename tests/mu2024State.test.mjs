@@ -1,11 +1,8 @@
 import assert from "node:assert/strict";
-import { readFile } from "node:fs/promises";
 import test from "node:test";
 import katex from "katex";
 
-const source = await readFile(new URL("../data/questions/mu.ts", import.meta.url), "utf8");
-const javascript = source.replace(/^import type .*;\s*/m, "").replace(": Question[]", "");
-const { muQuestions } = await import(`data:text/javascript;base64,${Buffer.from(javascript).toString("base64")}`);
+import { muQuestions } from "../data/questions/mu.ts";
 const batch = muQuestions.filter(q => (q.id - 10000) >= 177 && (q.id - 10000) <= 206);
 
 test("2024 State MU set keeps all 30 source answers and unique bank identifiers", () => {
@@ -22,8 +19,8 @@ test("2024 State MU set keeps all 30 source answers and unique bank identifiers"
     assert.ok(Number.isInteger(q.difficulty) && q.difficulty >= 1 && q.difficulty <= 5);
     assert.ok(q.topic && q.solution && Array.isArray(q.methods));
   });
-  assert.match(source, /2025 FAMAT State Convention/);
-  assert.match(source, /2024 FAMAT State Convention/);
+  assert.ok(muQuestions.some(q => q.source?.competition === "2025 FAMAT State Convention"));
+  assert.ok(muQuestions.some(q => q.source?.competition === "2024 FAMAT State Convention"));
 });
 
 test("all new question, choice and solution formulas render with KaTeX", () => {

@@ -1,4 +1,9 @@
 import type { Question } from "@/types/question";
+import { muJanuaryRegional2023Questions } from "./muJanuaryRegional2023.ts";
+import { muFebruaryRegional2023Questions } from "./muFebruaryRegional2023.ts";
+import { muFebruaryNSUStatewide2023Questions } from "./muFebruaryNSUStatewide2023.ts";
+import { muMarchRegional2023Questions } from "./muMarchRegional2023.ts";
+import { muMarchStatewide2023Questions } from "./muMarchStatewide2023.ts";
 
 const nsuMarchStatewide2024 = {
   competition: "2024 March NSU Statewide",
@@ -10324,4 +10329,9 @@ For \(n\ge1\), apply the Root Test:
 \[\sqrt[n]{|a_n|}=2024^{-20+(-0.24)^n/n}\longrightarrow2024^{-20}<1.\]
 Thus the series of absolute values converges, and the answer is C. The \(n=0\) term is just \(-2024\), a single finite term that cannot change convergence. This spells out the source's one-line Root Test and makes the meaning of its negative-base rational powers explicit.`,
   },
+  ...muJanuaryRegional2023Questions,
+  ...muFebruaryRegional2023Questions,
+  ...muFebruaryNSUStatewide2023Questions,
+  ...muMarchRegional2023Questions,
+  ...muMarchStatewide2023Questions,
 ];

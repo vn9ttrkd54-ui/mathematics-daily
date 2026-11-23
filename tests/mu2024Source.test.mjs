@@ -7,9 +7,7 @@ import React from "react";
 import { renderToStaticMarkup } from "react-dom/server";
 import katex from "katex";
 
-const source = readFileSync(new URL("../data/questions/mu.ts", import.meta.url), "utf8");
-const js = source.replace(/^import type .*;\s*/m, "").replace(": Question[]", "");
-const { muQuestions } = await import(`data:text/javascript;base64,${Buffer.from(js).toString("base64")}`);
+import { muQuestions } from "../data/questions/mu.ts";
 const questions = muQuestions.filter(q => (q.id - 10000) >= 177 && (q.id - 10000) <= 206);
 const get = n => questions[n - 177];
 const require = createRequire(import.meta.url);

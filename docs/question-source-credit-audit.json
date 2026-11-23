@@ -1,9 +1,9 @@
 {
-  "scope": "The original source-credit-only update is preserved by the historical sourceGroups, suppliedFiles, fingerprints, and validation fields. publicCatalog includes the Alpha imports listed in subsequentImports. Earlier question content and SVGs remain unchanged.",
+  "scope": "The original source-credit-only update is preserved by the historical sourceGroups, suppliedFiles, fingerprints, and validation fields. publicCatalog includes the Alpha and Mu imports listed in subsequentImports. Earlier question content and SVGs remain unchanged.",
   "publicCatalog": {
     "Mu": {
-      "questions": 558,
-      "credited": 558,
+      "questions": 708,
+      "credited": 708,
       "missing": []
     },
     "Alpha": {
@@ -16,7 +16,7 @@
       "credited": 447,
       "missing": []
     },
-    "total": 1477,
+    "total": 1627,
     "missingCount": 0
   },
   "subsequentImports": [
@@ -117,6 +117,72 @@
       "retainedOriginals": "1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30",
       "excludedOriginals": [],
       "svgs": []
+    },
+    {
+      "division": "Mu",
+      "competition": "2023 January Regional",
+      "reviewNotes": "Questions 21 and 22 specify increasing inverse functions to determine the sign of their common slope. Shared conditions are repeated on standalone questions.",
+      "event": "Calculus Individual",
+      "first": 10682,
+      "last": 10711,
+      "retainedOriginals": "1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30",
+      "excludedOriginals": [],
+      "svgs": []
+    },
+    {
+      "division": "Mu",
+      "competition": "2023 February Regional",
+      "reviewNotes": "The shared function tables and derivative graphs are reproduced on each corresponding question. Question 26 uses seconds consistently for velocity and position.",
+      "event": "Calculus Individual",
+      "first": 10712,
+      "last": 10741,
+      "retainedOriginals": "1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30",
+      "excludedOriginals": [],
+      "svgs": [
+        "mu-2023-feb-5-6.svg",
+        "mu-2023-feb-18.svg",
+        "mu-2023-feb-23.svg",
+        "mu-2023-feb-24-25.svg",
+        "mu-2023-feb-28.svg",
+        "mu-2023-feb-30.svg"
+      ]
+    },
+    {
+      "division": "Mu",
+      "competition": "2023 February NSU Statewide",
+      "reviewNotes": "Question 2 specifies the right derivative; 13 accounts for a zero linear coefficient. In 14 the bounds are repaired to be positive reciprocals with the intended difference. In 20 the cosine product gives C, not printed B. In 23 the transform needs the positive half-line. In 27 the series starts at index 1 and gives E, not printed C. In 28 the equation is stated in a form defined at the initial point.",
+      "event": "Calculus Individual",
+      "first": 10742,
+      "last": 10771,
+      "retainedOriginals": "1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30",
+      "excludedOriginals": [],
+      "svgs": []
+    },
+    {
+      "division": "Mu",
+      "competition": "2023 March Regional",
+      "reviewNotes": "In 14 a continuous probability density may have narrow peaks arbitrarily far out. Only the CDF limits are forced, giving D rather than printed B. The cone cross section in 26 is restored in its solution.",
+      "event": "Calculus Individual",
+      "first": 10772,
+      "last": 10801,
+      "retainedOriginals": "1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30",
+      "excludedOriginals": [],
+      "svgs": [
+        "mu-2023-mar-26-solution.svg"
+      ]
+    },
+    {
+      "division": "Mu",
+      "competition": "2023 March Statewide",
+      "reviewNotes": "Native equations recover notation missing from the page captures. In 5 the ordinary improper integral diverges at interior poles; the answer remains E. In 22 the wording specifies the area inside both curves. The solution diagram in 11 labels distances in miles.",
+      "event": "Calculus Individual",
+      "first": 10802,
+      "last": 10831,
+      "retainedOriginals": "1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30",
+      "excludedOriginals": [],
+      "svgs": [
+        "mu-2023-sw-11-solution.svg"
+      ]
     }
   ],
   "addedCredits": {
@@ -658,6 +724,7 @@
   "fingerprints": {
     "unchangedAlphaContent": "58432486ac41dd54186ca3f6c8894a24be6b3b0d688bee53cb361d9e1ab17e0c",
     "unchangedThetaContent": "5017f65ae6248a1b8676db7c2d6ecd190daa7310b11cb7a3e2c486a3fd8f2217",
+    "pre2023ImportMuRecords": "7c9451a91cc915049939f165f3a14b0c595cbe3b195a3bbc71935f16c4719375",
     "unchangedMuFile": "c44c28c37a223ed2236a616ce51aa363a304fb2ab192561efb0d1e24e4fd44c3",
     "preExistingCredits": "953c37b9f3fc0add0af82cb44573ed900cc6741301921ab662aaec909bf838ee",
     "unchangedSVGs": "357a1b784aab8e74dbe093af5749b1b6259869a0514b1a054b8d29328df443d0"

@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 367 232" role="img" aria-labelledby="title desc">
+<title id="title">Minimum-time river crossing</title>
+<desc id="desc">The river is 4 miles wide. The destination is 8 miles downstream. The red diagonal swimming path has length Y and lands X miles downstream. The remaining red segment along the shore has length 8 minus X.</desc>
+<rect width="367" height="232" fill="white"/>
+<g font-family="system-ui, sans-serif" font-size="16" fill="#16283c">
+<path d="M48 57H345V209H48Z" fill="none" stroke="#16283c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M48 209L162 57H345" fill="none" stroke="#c43435" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M48 175Q59 175 68 182" fill="none" stroke="#617689" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" />
+<text x="66" y="168" text-anchor="middle" font-size="16">θ</text>
+<text x="104" y="82" text-anchor="middle" font-size="16">X</text>
+<text x="256" y="82" text-anchor="middle" font-size="16">8 − X</text>
+<text x="117" y="147" text-anchor="middle" font-size="16">Y</text>
+<text x="18" y="139" text-anchor="middle" font-size="16">4 mi</text>
+<text x="196" y="39" text-anchor="middle" font-size="16">8 mi</text></g>
+</svg>

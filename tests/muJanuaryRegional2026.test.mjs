@@ -3,9 +3,7 @@ import { readFileSync } from "node:fs";
 import test from "node:test";
 import katex from "katex";
 
-const source = readFileSync(new URL("../data/questions/mu.ts", import.meta.url), "utf8");
-const js = source.replace(/^import type .*;\s*/m, "").replace(": Question[]", "");
-const { muQuestions } = await import(`data:text/javascript;base64,${Buffer.from(js).toString("base64")}`);
+import { muQuestions } from "../data/questions/mu.ts";
 const questions = muQuestions.filter(q => (q.id - 10000) >= 236 && (q.id - 10000) <= 265);
 
 const retained = Array.from({ length: 30 }, (_, index) => index + 1).filter(number => number !== 13);

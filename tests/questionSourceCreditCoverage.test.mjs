@@ -18,9 +18,9 @@ const clean=qs=>qs.map(q=>{
   return content;
 });
 
-test("all 1477 public questions have complete source credits and unique original-paper identities",()=>{
-  assert.equal(questions.length,1477);
-  assert.deepEqual([muQuestions.length,alphaQuestions.length,thetaQuestions.length],[558,472,447]);
+test("all 1627 public questions have complete source credits and unique original-paper identities",()=>{
+  assert.equal(questions.length,1627);
+  assert.deepEqual([muQuestions.length,alphaQuestions.length,thetaQuestions.length],[708,472,447]);
   const identities=new Set();
   for(const q of questions){
     assert.ok(q.source,"missing source: "+q.division+" #"+q.number);
@@ -61,8 +61,8 @@ test("five supplied existing Alpha sets and three already-identified Theta sets 
 test("all existing question content, labels, IDs, numbering, and pre-existing credits are unchanged",()=>{
   assert.equal(hash(clean(alphaQuestions.filter(q=>!importedIds.has(q.id)))),report.fingerprints.unchangedAlphaContent);
   assert.equal(hash(clean(thetaQuestions)),report.fingerprints.unchangedThetaContent);
-  assert.equal(createHash("sha256").update(readFileSync(new URL("../data/questions/mu.ts",import.meta.url))).digest("hex"),
-    report.fingerprints.unchangedMuFile);
+  assert.equal(hash(muQuestions.filter(q=>q.id<=10681)),
+    report.fingerprints.pre2023ImportMuRecords);
   assert.equal(hash(questions.filter(q=>!addedIds.has(q.id)&&!importedIds.has(q.id)).map(q=>[q.id,q.source])),report.fingerprints.preExistingCredits);
 });
 
@@ -70,9 +70,9 @@ test("all earlier SVGs remain byte-identical and the subsequent imports have ful
   const files=readdirSync(new URL("../public/questions/",import.meta.url)).filter(file=>file.endsWith(".svg")&&!importedSVGs.has(file)).sort();
   const digests=files.map(file=>[file,createHash("sha256").update(readFileSync(new URL("../public/questions/"+file,import.meta.url))).digest("hex")]);
   assert.equal(hash(digests),report.fingerprints.unchangedSVGs);
-  assert.equal(new Set(questions.map(q=>q.id)).size,1477);
+  assert.equal(new Set(questions.map(q=>q.id)).size,1627);
   for(const group of report.subsequentImports){
-    const imported=alphaQuestions.filter(q=>importedIds.has(q.id)&&q.source.competition===group.competition);
+    const imported=questions.filter(q=>q.division===group.division&&importedIds.has(q.id)&&q.source.competition===group.competition);
     assert.equal(imported.length,30-group.excludedOriginals.length);
     assert.deepEqual(imported.map(q=>q.source.questionNumber),Array.from({length:30},(_,i)=>i+1).filter(n=>!group.excludedOriginals.includes(n)));
     assert.ok(imported.every(q=>q.source.event===group.event));

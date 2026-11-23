@@ -2,9 +2,19 @@ import katex from "katex";
 import Image from "next/image";
 
 type MathTextProps = { children: string; className?: string };
-const MATH_DELIMITER = /(\\\[[\s\S]*?\\\]|\\\([\s\S]*?\\\)|\[\[solution-diagram:(?:alpha-2025-(?:feb-8|feb-3|feb-5|king-17|mar-30)|mu-(?:194|196|201|217|227|302|313|320|325|345|502|558)|theta-7|theta-nsu-2026-14|theta-feb-2026-(?:6|11|21|27|28|29))\]\])/g;
+const MATH_DELIMITER = /(\\\[[\s\S]*?\\\]|\\\([\s\S]*?\\\)|\[\[solution-diagram:(?:mu-2023-(?:sw-11|mar-26)|alpha-2025-(?:feb-8|feb-3|feb-5|king-17|mar-30)|mu-(?:194|196|201|217|227|302|313|320|325|345|502|558)|theta-7|theta-nsu-2026-14|theta-feb-2026-(?:6|11|21|27|28|29))\]\])/g;
 // Explicit local allowlist: never interpret arbitrary URLs or HTML from text.
 const SOLUTION_DIAGRAMS: Record<string, { src: string; alt: string; width: number; height: number }> = {
+  "[[solution-diagram:mu-2023-mar-26]]": {
+    src: "/questions/mu-2023-mar-26-solution.svg",
+    alt: "Triangle with apex C, base center B, and right base endpoint A. The incircle centered at I touches the base at B and both sloping sides. AI bisects the angle at A.",
+    width: 250, height: 311,
+  },
+  "[[solution-diagram:mu-2023-sw-11]]": {
+    src: "/questions/mu-2023-sw-11-solution.svg",
+    alt: "The river is 4 miles wide. The destination is 8 miles downstream. The red diagonal swimming path has length Y and lands X miles downstream. The remaining red segment along the shore has length 8 minus X.",
+    width: 367, height: 232,
+  },
   "[[solution-diagram:alpha-2025-feb-8]]": {
     src: "/questions/alpha-2025-feb-8-solution.svg",
     alt: "A radius to the upper right corner makes a right triangle of height 4√5 and base 2√5.",

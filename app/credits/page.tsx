@@ -70,6 +70,7 @@ export default function CreditsPage() {
                 Mathematics Honor Society
               </a>.
             </p>
+            <p>The 2023 Calculus Individual problems and official solutions come from the January, February, and March FAMAT Regionals, the February NSU Statewide, and the March Statewide. Each question lists the original competition and problem number. Mathematics Daily corrected errors and expanded explanations for practice.</p>
             <p>2025 Precalculus Individual questions and solutions are credited to the January, February, and March FAMAT Regionals, the Chiles Statewide, and the C. Leon King High School Statewide competition. Each question lists its original paper and number.</p>
             <p className={styles.independence}>
               Mathematics Daily is an independent educational project and is not

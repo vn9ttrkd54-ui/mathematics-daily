@@ -12,7 +12,7 @@ export default function QuestionImage({ illustration }: { illustration?: Questio
         alt={illustration.alt}
         width={illustration.width}
         height={illustration.height}
-        className="mx-auto h-auto w-full max-w-3xl"
+        className="mx-auto h-auto max-h-[75svh] w-full max-w-3xl object-contain"
       />
     </div>
   );

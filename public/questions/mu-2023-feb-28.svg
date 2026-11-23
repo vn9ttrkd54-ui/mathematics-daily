@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 306 132" role="img" aria-labelledby="title desc">
+<title id="title">Values and derivatives at zero and one</title>
+<desc id="desc">At x=0, f=2, f prime=1 and f double prime=−1. At x=1, f=−3, f prime=4 and f double prime=2.</desc>
+<rect width="306" height="132" fill="white"/>
+<g font-family="system-ui, sans-serif" font-size="16" fill="#16283c">
+<rect x="10" y="10" width="71.5" height="37" fill="#eff4fa" stroke="#acb8c4"/>
+<text x="45.75" y="34.5" text-anchor="middle" font-size="17">x</text>
+<rect x="81.5" y="10" width="71.5" height="37" fill="#eff4fa" stroke="#acb8c4"/>
+<text x="117.25" y="34.5" text-anchor="middle" font-size="17">f(x)</text>
+<rect x="153" y="10" width="71.5" height="37" fill="#eff4fa" stroke="#acb8c4"/>
+<text x="188.75" y="34.5" text-anchor="middle" font-size="17">f′(x)</text>
+<rect x="224.5" y="10" width="71.5" height="37" fill="#eff4fa" stroke="#acb8c4"/>
+<text x="260.25" y="34.5" text-anchor="middle" font-size="17">f″(x)</text>
+<rect x="10" y="47" width="71.5" height="37" fill="white" stroke="#acb8c4"/>
+<text x="45.75" y="71.5" text-anchor="middle" font-size="17">0</text>
+<rect x="81.5" y="47" width="71.5" height="37" fill="white" stroke="#acb8c4"/>
+<text x="117.25" y="71.5" text-anchor="middle" font-size="17">2</text>
+<rect x="153" y="47" width="71.5" height="37" fill="white" stroke="#acb8c4"/>
+<text x="188.75" y="71.5" text-anchor="middle" font-size="17">1</text>
+<rect x="224.5" y="47" width="71.5" height="37" fill="white" stroke="#acb8c4"/>
+<text x="260.25" y="71.5" text-anchor="middle" font-size="17">−1</text>
+<rect x="10" y="84" width="71.5" height="37" fill="white" stroke="#acb8c4"/>
+<text x="45.75" y="108.5" text-anchor="middle" font-size="17">1</text>
+<rect x="81.5" y="84" width="71.5" height="37" fill="white" stroke="#acb8c4"/>
+<text x="117.25" y="108.5" text-anchor="middle" font-size="17">−3</text>
+<rect x="153" y="84" width="71.5" height="37" fill="white" stroke="#acb8c4"/>
+<text x="188.75" y="108.5" text-anchor="middle" font-size="17">4</text>
+<rect x="224.5" y="84" width="71.5" height="37" fill="white" stroke="#acb8c4"/>
+<text x="260.25" y="108.5" text-anchor="middle" font-size="17">2</text></g>
+</svg>

@@ -3,6 +3,7 @@ import {createHash} from "node:crypto";
 import {readFileSync} from "node:fs";
 import test from "node:test";
 import katex from "katex";
+import {muQuestions} from "../data/questions/mu.ts";
 import {thetaQuestions} from "../data/questions/theta.ts";
 import {alphaQuestions} from "../data/questions/alpha.ts";
 
@@ -55,8 +56,8 @@ test("existing retained IDs, numbering, topics, methods, difficulty, choices and
     return content;
   })),
     "1b2e78d0282aaed469a7ddbd4f55693fd87089698181c3d5d797bf07f6e9e981");
-  assert.equal(createHash("sha256").update(readFileSync(new URL("../data/questions/mu.ts",import.meta.url))).digest("hex"),
-    "c44c28c37a223ed2236a616ce51aa363a304fb2ab192561efb0d1e24e4fd44c3");
+  assert.equal(hash(muQuestions.filter(q=>q.id<=10681)),
+    "7c9451a91cc915049939f165f3a14b0c595cbe3b195a3bbc71935f16c4719375");
   // Later authorized Alpha source credits must leave all reviewed content intact.
   assert.equal(hash(alphaQuestions.filter(q=>q.id<=20330).map(q=>{
     const content={...q};
