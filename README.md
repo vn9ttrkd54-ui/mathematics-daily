@@ -31,7 +31,7 @@ Vercel hosts the application. Supabase stores account and gameplay records separ
 
 ## Development history
 
-The source-code repository became public on GitHub on November 1, 2026. Before that date, the Git history on `main` was sanitized to remove permission-restricted question content, local Supabase connection metadata, and personal email addresses. All 707 existing commits were retained in their original order, along with their messages, author display names, and dates. The commit hashes changed. On the current branch, withheld question references contain only editorial metadata. An anonymous check on November 23 still found question text at a pre-rewrite revision. Removal of that hosted copy remains unresolved. The current source tree includes the corresponding publication notes and test adjustments. Third-party question material remains subject to its recorded redistribution terms.
+The source-code repository became public on GitHub on November 1, 2026. Before that date, the Git history on `main` was sanitized to remove permission-restricted question content, local Supabase connection metadata, and personal email addresses. All 707 existing commits were retained in their original order, along with their messages, author display names, and dates. The commit hashes changed. Withheld question references now contain only editorial metadata. The current source tree includes the corresponding publication notes and test adjustments. Third-party question material remains subject to its recorded redistribution terms.
 
 These milestones describe the development recorded in the [Git history](https://github.com/vn9ttrkd54-ui/MAO-practice/commits/main):
 
@@ -42,9 +42,14 @@ These milestones describe the development recorded in the [Git history](https://
 | September 2026 | Curriculum-guided Llama Tutor, staged hints and work-checking, usage accounting, retry-safe practice attempts, and account recovery improvements. |
 | October 2026 | Multiplayer recovery and handoff improvements; lighter Question Bank browsing; isolated Trainer timer rendering; reviewed catalogs, SVG figures, and source credits; New York challenge dates and community problem submissions. |
 
+<a id="engineering-problems-and-changes"></a>
+
 ## Engineering challenges
 
 Browse the 23 cases by topic, or open the [Git history and SQL index](docs/engineering-history-index.md) for the underlying changes.
+
+<details>
+<summary>Browse all 23 engineering cases</summary>
 
 | Topic | Cases |
 | --- | ---: |
@@ -399,6 +404,8 @@ Browse the 23 cases by topic, or open the [Git history and SQL index](docs/engin
 **Testing and results** — Local browser-policy and dependency-patch unit tests passed. The repository also has a browser-level math rendering suite. Production browser headers, external control panels and a current package audit were not rechecked for this documentation pass.
 
 **Evidence** — [fffca82](https://github.com/vn9ttrkd54-ui/mathematics-daily/commit/fffca82f8ef3991577d5ff85608ced5f88e8062a) · [eba0084](https://github.com/vn9ttrkd54-ui/mathematics-daily/commit/eba00843406b20f276caf173878b2940d2666db3) · [browserSecurityPolicy.test.mjs](tests/browserSecurityPolicy.test.mjs) · [dependencyPatches.test.mjs](tests/security/dependencyPatches.test.mjs) · [mathRendering.browser.mjs](tests/security/mathRendering.browser.mjs)
+
+</details>
 
 ## How to run locally
 
