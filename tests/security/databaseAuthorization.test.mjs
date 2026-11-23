@@ -19,6 +19,7 @@ test('database account authorization matrix', async (t) => {
   };
   try {
     await db.exec(`set timezone='UTC'; create role anon; create role authenticated; create role service_role bypassrls;
+      create role authenticator;
       create schema auth;
       create table auth.users(id uuid primary key,email text,
         raw_app_meta_data jsonb not null default '{}',raw_user_meta_data jsonb not null default '{}');
@@ -27,7 +28,16 @@ test('database account authorization matrix', async (t) => {
       grant usage on schema auth to anon,authenticated,service_role;
       create publication supabase_realtime;
       create schema realtime;
-      create function realtime.send(payload jsonb,event text,topic text,private boolean) returns void language plpgsql as $$ begin return; end $$;`);
+      create function realtime.send(payload jsonb,event text,topic text,private boolean) returns void language plpgsql as $$ begin return; end $$;
+      -- Registration/metadata fixture only: no pg_cron workers run in PGlite.
+      create schema cron;
+      create table cron.job(jobid bigint generated always as identity primary key,jobname text unique,schedule text,command text,username text,active boolean default true);
+      create table cron.job_run_details(runid bigint primary key,jobid bigint,status text,end_time timestamptz,username text not null default 'postgres');
+      create function cron.schedule(p_name text,p_schedule text,p_command text) returns bigint language plpgsql as $$
+        declare result bigint;
+        begin insert into cron.job(jobname,schedule,command,username) values(p_name,p_schedule,p_command,current_user)
+          on conflict(jobname) do update set schedule=excluded.schedule,command=excluded.command returning jobid into result;
+          return result; end; $$;`);
     const directory = new URL('../../supabase/migrations/', import.meta.url);
     for (const name of (await readdir(directory)).filter(n => n.endsWith('.sql')).sort()) {
       if (name.startsWith('035_') || name.startsWith('050_')) continue; // Hosted pg_cron only.
@@ -106,7 +116,16 @@ test('database account authorization matrix', async (t) => {
           if (!n) await assert.rejects(db.query(`select * from ${table}`), error => error.code === '42501');
           else assert.deepEqual((await db.query(`select user_id from ${table}`)).rows, [{ user_id: uid(n) }]);
           await assert.rejects(db.query(`delete from ${table}`), error => error.code === '42501');
+          await assert.rejects(db.query(`truncate ${table}`), error => error.code === '42501');
         }
+        for (const target of [uid(n || 1), uid(n === 1 ? 2 : 1)]) {
+          await assert.rejects(db.query(`insert into challenge_attempts
+            (user_id,challenge_date,question_id,selected_answer,correct)
+            values($1,current_date,'AUTH-TEST','A',true)`, [target]), error => error.code === '42501');
+          await assert.rejects(db.query('insert into challenge_user_statistics(user_id,total_correct) values($1,999)', [target]), error => error.code === '42501');
+        }
+        await assert.rejects(db.query('update challenge_attempts set correct=true'), error => error.code === '42501');
+        await assert.rejects(db.query('update challenge_user_statistics set current_streak=999'), error => error.code === '42501');
         await assert.rejects(db.query("select submit_challenge_attempt($1,current_date,'AUTH-TEST','A',true)", [uid(n || 1)]), error => error.code === '42501');
         await assert.rejects(db.query('select * from get_challenge_leaderboard_position($1)', [uid(2)]), error => error.code === '42501');
         if (n) assert.deepEqual((await db.query('select user_id from get_my_challenge_leaderboard_position()')).rows, [{ user_id: uid(n) }]);

@@ -28,20 +28,32 @@ async function checksums() {
   return Promise.all(tables.map(table => scalar(`select md5(coalesce(string_agg(row_to_json(t)::text,',' order by row_to_json(t)::text),'')) from ${table} t`)));
 }
 try {
-  await db.exec(`set timezone='UTC'; create role anon; create role authenticated; create role service_role bypassrls;
-    create schema auth; create table auth.users(id uuid primary key,email text,raw_user_meta_data jsonb not null default '{}');
+  await db.exec(`set timezone='UTC'; create role anon; create role authenticated; create role service_role bypassrls; create role authenticator;
+    create schema auth; create table auth.users(id uuid primary key,email text,raw_user_meta_data jsonb not null default '{}',raw_app_meta_data jsonb not null default '{}');
     create function auth.uid() returns uuid language sql stable as $$select nullif(current_setting('request.jwt.claim.sub',true),'')::uuid$$;
     create function auth.role() returns text language sql stable as $$select current_setting('request.jwt.claim.role',true)$$;
     grant usage on schema auth to anon,authenticated,service_role;
     create publication supabase_realtime; create schema realtime;
     create function realtime.send(payload jsonb,event text,topic text,private boolean) returns void language plpgsql as $$begin return; end$$;`);
+  // Job-registration mock only; PGlite does not run pg_cron background workers.
+  await db.exec(`create schema cron;
+    create table cron.job(jobid bigint generated always as identity primary key,jobname text unique,schedule text,command text,username text,active boolean default true);
+    create table cron.job_run_details(runid bigint primary key,jobid bigint,status text,end_time timestamptz,username text not null default 'postgres');
+    create function cron.schedule(p_name text,p_schedule text,p_command text) returns bigint language plpgsql as $$
+      declare job_id bigint;
+      begin insert into cron.job(jobname,schedule,command,username) values(p_name,p_schedule,p_command,current_user)
+        on conflict(jobname) do update set schedule=excluded.schedule,command=excluded.command returning jobid into job_id;
+        return job_id; end; $$;`);
   for (const name of (await readdir(directory)).filter(n => n.endsWith(".sql")).sort()) {
     if (/^(035|050|053)_/.test(name)) continue;
     try { await db.exec(await readFile(new URL(name, directory), "utf8")); }
     catch (error) { throw new Error(`Migration ${name}: ${error.message}`); }
   }
   await db.exec("select set_config('request.jwt.claim.role','service_role',false)");
-  for (const n of [1,2]) await db.query("insert into auth.users(id,raw_user_meta_data) values($1,$2)", [uid(n), { username: `fixture_${n}` }]);
+  for (const n of [1,2]) await db.query("insert into auth.users(id,raw_user_meta_data,email) values($1,$2,$3)", [uid(n), {
+    username: `fixture_${n}`, age_13_or_older: true, terms_version: "2026-09-07",
+    privacy_version: "2026-09-07", terms_accepted_at: "2026-10-01T00:00:00Z",
+  }, `fixture_${n}@users.mao-practice.local`]);
   await db.query(`insert into trainer_sessions(id,user_id,division,started_at,ended_at,starting_level,starting_progress,ending_level,ending_progress)
     select ('20000000-0000-4000-8000-'||lpad(n::text,12,'0'))::uuid,$1,'Mu',
       '2026-01-01'::timestamptz+n*interval '1 hour','2026-01-01'::timestamptz+n*interval '1 hour'+interval '1 second',1,0,1,0

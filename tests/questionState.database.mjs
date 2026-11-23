@@ -16,13 +16,22 @@ async function asUser(n, work) {
 }
 const read = (n,id) => asUser(n,()=>scalar("select public.get_question_state($1)",[id]));
 try {
-  await db.exec(`set timezone='UTC'; create role anon; create role authenticated; create role service_role bypassrls;
+  await db.exec(`set timezone='UTC'; create role anon; create role authenticated; create role service_role bypassrls; create role authenticator;
     create schema auth; create table auth.users(id uuid primary key,email text,raw_user_meta_data jsonb not null default '{}',raw_app_meta_data jsonb not null default '{}');
     create function auth.uid() returns uuid language sql stable as $$select nullif(current_setting('request.jwt.claim.sub',true),'')::uuid$$;
     create function auth.role() returns text language sql stable as $$select current_setting('request.jwt.claim.role',true)$$;
     grant usage on schema auth to anon,authenticated,service_role;
     create publication supabase_realtime; create schema realtime;
     create function realtime.send(payload jsonb,event text,topic text,private boolean) returns void language plpgsql as $$begin return; end$$;`);
+  // Job-registration mock only; PGlite does not run pg_cron background workers.
+  await db.exec(`create schema cron;
+    create table cron.job(jobid bigint generated always as identity primary key,jobname text unique,schedule text,command text,username text,active boolean default true);
+    create table cron.job_run_details(runid bigint primary key,jobid bigint,status text,end_time timestamptz,username text not null default 'postgres');
+    create function cron.schedule(p_name text,p_schedule text,p_command text) returns bigint language plpgsql as $$
+      declare job_id bigint;
+      begin insert into cron.job(jobname,schedule,command,username) values(p_name,p_schedule,p_command,current_user)
+        on conflict(jobname) do update set schedule=excluded.schedule,command=excluded.command returning jobid into job_id;
+        return job_id; end; $$;`);
   for (const name of (await readdir(dir)).filter(n=>n.endsWith(".sql")).sort()) {
     if (/^(035|050|054)_/.test(name)) continue;
     await db.exec(await readFile(new URL(name,dir),"utf8"));
